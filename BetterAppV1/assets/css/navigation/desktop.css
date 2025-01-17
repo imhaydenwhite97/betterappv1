@@ -1,0 +1,223 @@
+/* Desktop Navigation Styles */
+:root {
+    /* Desktop - Large screens (1200px and up) */
+    --h1-size: clamp(2rem, 4vw, 3rem);
+    --h2-size: clamp(1.5rem, 3vw, 2.5rem);
+    --nav-size: clamp(1rem, 1.5vw, 1.25rem);
+    --button-size: clamp(0.875rem, 1vw, 1rem);
+    
+    /* Tablet (768px to 1199px) */
+    --tablet-h1: 2rem;
+    --tablet-h2: 1.5rem;
+    --tablet-nav: 0.9rem;
+    --tablet-button: 0.875rem;
+}
+
+.desktop-header {
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    padding: 0 20px;
+    z-index: 1001;
+    transition: all 0.3s ease-out;
+}
+
+.desktop-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    height: 40px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.08) 40%,
+        rgba(0, 0, 0, 0.02) 80%,
+        transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+}
+
+.desktop-header.has-active-menu {
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12),
+                0 4px 8px -2px rgba(0, 0, 0, 0.08);
+}
+
+.desktop-header.has-active-menu::after {
+    opacity: 1;
+}
+
+.desktop-header .menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    cursor: pointer;
+    font-size: var(--nav-size);
+    font-weight: bold;
+}
+
+.desktop-header .logo {
+    margin: 0;
+    line-height: 0;
+}
+
+.desktop-header .logo img {
+    height: 100px;
+    width: auto;
+    display: block;
+}
+
+.desktop-header .priority-links {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.desktop-header .priority-links .menu-item {
+    position: relative;
+    margin: 0 15px;
+}
+
+.desktop-header .priority-links .menu-item > a {
+    text-decoration: none;
+    color: #333;
+    font-size: var(--nav-size);
+    padding: 5px 10px;
+}
+
+.desktop-header .priority-links .menu-item > a:hover {
+    color: #28a745;
+}
+
+/* Mega Menu Styling */
+.desktop-header .priority-links .menu-item .mega-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    z-index: 999;
+}
+
+.desktop-header .priority-links .menu-item .mega-menu.active {
+    height: 400px;
+}
+
+.mega-menu-content {
+    padding: 20px 5%;
+    display: flex;
+    gap: 40px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.mega-menu.active .mega-menu-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Featured Section */
+.featured-section {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.featured-text {
+    margin: 15px 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #555;
+}
+
+.cta-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+/* Menu Columns */
+.menu-columns {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.menu-columns .column {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-columns .column h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.menu-columns .column a {
+    color: #555;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.menu-columns .column a:hover {
+    color: #28a745;
+}
+
+/* Desktop Auth Buttons */
+.desktop-header .user-auth {
+    display: flex;
+    align-items: center;
+}
+
+.desktop-header .user-auth .login-btn,
+.desktop-header .user-auth .register-btn {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Tablet Adjustments */
+@media (max-width: 1199px) {
+    .desktop-header .priority-links .menu-item > a {
+        font-size: var(--tablet-nav);
+    }
+    
+    .desktop-header .user-auth .login-btn,
+    .desktop-header .user-auth .register-btn {
+        font-size: var(--tablet-button);
+    }
+}

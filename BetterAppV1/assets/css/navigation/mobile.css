@@ -1,0 +1,184 @@
+/* Mobile Navigation Variables */
+:root {
+    --mobile-h1: 1.5rem;
+    --mobile-h2: 1.25rem;
+    --mobile-nav: 0.875rem;
+    --mobile-button: 0.75rem;
+}
+
+/* Mobile Header */
+.mobile-header {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 0px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 40px);
+    z-index: 1000;
+    height: 60px;
+}
+
+.mobile-header .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.mobile-header .logo img {
+    height: 40px;
+    width: auto;
+}
+
+.mobile-header .user-auth {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-header .login-signup {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Side Menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-out;
+    z-index: 1001;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.side-menu-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.side-menu-header .logo img {
+    height: 40px;
+    width: auto;
+}
+
+.side-menu-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.side-menu-content {
+    padding: 20px;
+}
+
+.side-menu-content a {
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Bottom Bar */
+.mobile-bottom-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.mobile-bottom-bar button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.mobile-bottom-bar button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Touch Device States */
+.touch-device .desktop-header {
+    display: none;
+}
+
+.touch-device .mobile-header,
+.touch-device .mobile-bottom-bar {
+    display: flex;
+    height: 60px;
+}
+
+.touch-device body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* Mobile-First Media Queries */
+@media (max-width: 768px) {
+    .desktop-header {
+        display: none;
+    }
+
+    .mobile-header,
+    .mobile-bottom-bar {
+        display: flex;
+    }
+
+    .mobile-header .logo {
+        font-size: var(--mobile-h1);
+    }
+
+    .mobile-header .login-signup {
+        font-size: var(--mobile-button);
+    }
+
+    body {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
